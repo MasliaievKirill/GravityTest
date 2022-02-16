@@ -6,7 +6,7 @@ import javax.inject.Inject
 class LoadResponseUseCase @Inject constructor(
     private val repository: ResponseRepository
 ) {
-    suspend fun loadResponse() {
-        repository.loadResponse()
+    suspend fun loadResponse(): Boolean {
+       return repository.loadResponse()
     }
 }

@@ -15,9 +15,14 @@ class ResponseRepositoryImpl @Inject constructor(
     private val mapper: ResponseMapper
 ) : ResponseRepository {
 
-    override suspend fun loadResponse() {
-        val response = apiService.loadResponse()
-        responseDao.insertResponse(mapper.mapResponseDtoToResponseDbModel(response))
+    override suspend fun loadResponse(): Boolean {
+        return try {
+            val response = apiService.loadResponse()
+            responseDao.insertResponse(mapper.mapResponseDtoToResponseDbModel(response))
+            true
+        } catch (exception: Exception) {
+            false
+        }
     }
 
     override fun getResponse(): LiveData<List<Response>> {
@@ -28,7 +33,4 @@ class ResponseRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun deleteResponse() {
-        responseDao.deleteResponse()
-    }
 }

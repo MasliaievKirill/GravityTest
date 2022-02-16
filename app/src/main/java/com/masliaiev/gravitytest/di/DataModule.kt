@@ -15,16 +15,19 @@ import dagger.Provides
 interface DataModule {
 
     @Binds
+    @ApplicationScope
     fun bindResponseRepository(impl: ResponseRepositoryImpl): ResponseRepository
 
     companion object{
 
         @Provides
+        @ApplicationScope
         fun provideResponseDao(application: Application): ResponseDao{
             return AppDatabase.getInstance(application).responseDao()
         }
 
         @Provides
+        @ApplicationScope
         fun provideApiService(): ApiService{
             return ApiFactory.apiService
         }

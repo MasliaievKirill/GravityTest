@@ -4,7 +4,7 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET
+    @GET("prod")
     suspend fun loadResponse(): ResponseDto
 
 }

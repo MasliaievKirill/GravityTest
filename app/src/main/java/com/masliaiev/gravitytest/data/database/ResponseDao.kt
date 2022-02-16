@@ -15,7 +15,4 @@ interface ResponseDao {
     @Query("SELECT * FROM response")
     fun getResponse(): LiveData<List<ResponseDbModel>>
 
-    @Query("DELETE FROM response")
-    suspend fun deleteResponse()
-
 }

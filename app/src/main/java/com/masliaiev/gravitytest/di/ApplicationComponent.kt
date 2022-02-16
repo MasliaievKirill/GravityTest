@@ -1,12 +1,13 @@
 package com.masliaiev.gravitytest.di
 
 import android.app.Application
-import com.masliaiev.gravitytest.presentation.LoadFragment
-import com.masliaiev.gravitytest.presentation.WebViewFragment
+import com.masliaiev.gravitytest.presentation.fragments.LoadFragment
+import com.masliaiev.gravitytest.presentation.fragments.WebViewFragment
 import dagger.BindsInstance
 import dagger.Component
 
-@Component
+@ApplicationScope
+@Component(modules = [DataModule::class, ViewModelModule::class])
 interface ApplicationComponent {
 
     fun inject(fragment: LoadFragment)

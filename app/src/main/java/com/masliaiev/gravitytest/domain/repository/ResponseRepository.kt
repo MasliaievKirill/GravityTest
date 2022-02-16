@@ -5,10 +5,8 @@ import com.masliaiev.gravitytest.domain.entity.Response
 
 interface ResponseRepository {
 
-    suspend fun loadResponse()
+    suspend fun loadResponse(): Boolean
 
     fun getResponse(): LiveData<List<Response>>
-
-    suspend fun deleteResponse()
 
 }
