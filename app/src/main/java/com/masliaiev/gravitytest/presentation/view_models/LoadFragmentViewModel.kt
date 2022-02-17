@@ -4,16 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.masliaiev.gravitytest.domain.usecases.CheckResponseIsExistUseCase
 import com.masliaiev.gravitytest.domain.usecases.LoadResponseUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class LoadFragmentViewModel @Inject constructor(
-    private val loadResponseUseCase: LoadResponseUseCase
+    private val loadResponseUseCase: LoadResponseUseCase,
+    private val checkResponseIsExistUseCase: CheckResponseIsExistUseCase
 ) : ViewModel() {
 
-    private var _loadResult = MutableLiveData<Boolean>()
-    val loadResult: LiveData<Boolean>
+    private var _loadResult = MutableLiveData<Pair<Boolean, Boolean>>()
+    val loadResult: LiveData<Pair<Boolean, Boolean>>
         get() = _loadResult
 
     init {
@@ -23,7 +25,9 @@ class LoadFragmentViewModel @Inject constructor(
     private fun loadResponse() {
         viewModelScope.launch {
             val loadIsSuccessful = loadResponseUseCase.loadResponse()
-            _loadResult.value = loadIsSuccessful
+            val responseIsExist = checkResponseIsExistUseCase.responseIsExist()
+            _loadResult.value = Pair(loadIsSuccessful, responseIsExist)
         }
     }
+
 }

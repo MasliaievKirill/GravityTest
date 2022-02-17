@@ -1,4 +1,4 @@
-package com.masliaiev.gravitytest.presentation
+package com.masliaiev.gravitytest.presentation.activities
 
 import android.os.Build
 import android.os.Bundle
@@ -35,6 +35,5 @@ class MainActivity : AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         }
     }
-
 
 }

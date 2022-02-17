@@ -10,7 +10,8 @@ class ResponseMapper @Inject constructor() {
     fun mapResponseDtoToResponseDbModel(responseDto: ResponseDto): ResponseDbModel{
         return ResponseDbModel(
             link = responseDto.link,
-            home = responseDto.home
+            home = responseDto.home,
+            id = RESPONSE_ID
         )
     }
 
@@ -19,6 +20,10 @@ class ResponseMapper @Inject constructor() {
             link = responseDbModel.link,
             home = responseDbModel.home
         )
+    }
+
+    companion object{
+        private const val RESPONSE_ID = 1
     }
 
 }

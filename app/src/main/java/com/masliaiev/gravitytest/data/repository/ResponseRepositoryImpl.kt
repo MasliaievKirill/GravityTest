@@ -25,12 +25,13 @@ class ResponseRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getResponse(): LiveData<List<Response>> {
+    override fun getResponse(): LiveData<Response> {
         return Transformations.map(responseDao.getResponse()) {
-            it.map {
-                mapper.mapResponseDbModelToResponseEntity(it)
-            }
+            mapper.mapResponseDbModelToResponseEntity(it)
         }
     }
 
+    override suspend fun responseIsExist(): Int {
+        return responseDao.responseIsExist()
+    }
 }

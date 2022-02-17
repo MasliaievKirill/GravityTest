@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetResponseUseCase @Inject constructor(
     private val repository: ResponseRepository
 ) {
-    fun getResponse(): LiveData<List<Response>>{
+    fun getResponse(): LiveData<Response>{
         return repository.getResponse()
     }
 }

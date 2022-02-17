@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class ResponseDbModel(
     val link: String,
     @PrimaryKey
-    val home: String
+    val home: String,
+    val id: Int
 )

@@ -7,6 +7,8 @@ interface ResponseRepository {
 
     suspend fun loadResponse(): Boolean
 
-    fun getResponse(): LiveData<List<Response>>
+    fun getResponse(): LiveData<Response>
+
+    suspend fun responseIsExist(): Int
 
 }
